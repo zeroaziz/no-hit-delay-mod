@@ -1,6 +1,6 @@
 plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
-    id 'legacy-looming' version '1.7-SNAPSHOT'
+    id 'ploceus' version '1.7-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -8,7 +8,7 @@ version = "1.0.0"
 group = "net.legacyfabric.example"
 
 base {
-    archivesName = "no-hit-delay"
+    archivesName = "no-hit-delay-ornithe"
 }
 
 repositories {
@@ -17,8 +17,12 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:1.8.9"
-    mappings "net.legacyfabric:yarn:1.8.9+build.604:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.19.3"
+    mappings ploceus.featherMappings("1.8.9+build.28")
+    modImplementation "net.fabricmc:fabric-loader:0.15.11"
+}
+
+ploceus {
+    setIntermediaryGeneration(2)
 }
 
 processResources {
