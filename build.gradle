@@ -1,0 +1,48 @@
+plugins {
+	id 'fabric-loom' version '1.7-SNAPSHOT'
+	id 'maven-publish'
+}
+
+version = "1.0.0"
+group = "net.legacyfabric"
+
+base {
+	archivesName = "no-hit-delay"
+}
+
+repositories {
+	maven {
+		name = "LegacyFabric"
+		url = "https://legacyfabric.net"
+	}
+	maven {
+		name = "Fabric"
+		url = "https://fabricmc.net"
+	}
+	mavenCentral()
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:1.8.9"
+	mappings "net.legacyfabric.v2:yarn:1.8.9+build.568:v2"
+	modImplementation "net.fabricmc:fabric-loader:0.15.11"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 8
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
