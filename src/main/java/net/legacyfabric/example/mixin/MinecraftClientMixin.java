@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftClientMixin {
     @Shadow private int attackCooldown;
 
-    @Inject(method = "doAttack", at = @At("HEAD"))
-    private void onDoAttack(CallbackInfo ci) {
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void onTick(CallbackInfo ci) {
         this.attackCooldown = 0;
     }
 }
