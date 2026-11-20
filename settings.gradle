@@ -1,12 +1,16 @@
 pluginManagement {
     repositories {
         maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
+            name = 'Ornithe'
+            url = 'https://ornithemc.net'
         }
         maven {
-            name = 'Legacy Fabric'
-            url = 'https://maven.legacyfabric.net/'
+            name = 'Ornithe Snapshots'
+            url = 'https://ornithemc.net'
+        }
+        maven {
+            name = 'Fabric'
+            url = 'https://fabricmc.net'
         }
         mavenCentral()
         gradlePluginPortal()
