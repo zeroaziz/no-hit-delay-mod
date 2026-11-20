@@ -21,10 +21,6 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:0.15.11"
 }
 
-ploceus {
-    setIntermediaryGeneration(2)
-}
-
 processResources {
     inputs.property "version", project.version
 
