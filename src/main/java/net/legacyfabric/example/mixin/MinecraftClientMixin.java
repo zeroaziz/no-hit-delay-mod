@@ -24,6 +24,13 @@ public class MinecraftClientMixin {
     @Unique private boolean enabled = true;
     @Unique private boolean keyPressed = false;
 
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void onTickStart(CallbackInfo ci) {
+        if (this.enabled) {
+            this.attackCooldown = 0;
+        }
+    }
+
     @Inject(method = "tick", at = @At("TAIL"))
     private void onTickEnd(CallbackInfo ci) {
         if (this.options != null && this.options.smoothCamera) {
