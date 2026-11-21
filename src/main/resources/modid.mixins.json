@@ -1,1 +1,13 @@
-{"required":true,"minVersion":"0.8","package":"net.legacyfabric.example.mixin","compatibilityLevel":"JAVA_8","client":["MinecraftClientMixin"],"injectors":{"defaultRequire":1}}
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.legacyfabric.example.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "no-hit-delay-ornithe-refmap.json",
+  "client": [
+    "MinecraftClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
