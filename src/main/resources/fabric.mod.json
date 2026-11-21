@@ -1,32 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "nohitdelay",
   "version": "${version}",
-  "name": "no hit delay",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "No Hit Delay",
+  "description": "Removes hit delay and toggles smooth camera with Z.",
   "authors": [
-    "Me!"
+    "zeroaziz"
   ],
-  "contact": {
-    "homepage": "https://legacyfabric.net/",
-    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
-  },
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "net.legacyfabric.example.ExampleMod"
-    ]
-  },
+  "environment": "client",
   "mixins": [
     "modid.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.0",
+    "fabricloader": ">=0.14.0",
     "minecraft": "1.8.9"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
