@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Minecraft.class)
 public class MinecraftClientMixin {
     @Shadow private int attackCooldown;
-    @Shadow private int itemUseCooldown;
     @Shadow public LocalClientPlayerEntity player;
     @Shadow public GameOptions options;
     @Shadow public Screen screen;
@@ -33,7 +32,6 @@ public class MinecraftClientMixin {
 
         if (this.enabled) {
             this.attackCooldown = 0;
-            this.itemUseCooldown = 0;
         }
 
         if (this.player != null && !this.announced) {
