@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:1.8.9"
-    mappings ploceus.featherMappings("28")
+    mappings ploceus.featherMappings("2")
     modImplementation "net.fabricmc:fabric-loader:0.15.11"
 }
 
