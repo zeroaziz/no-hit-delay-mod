@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.options.GameOptions;
 import net.minecraft.text.LiteralText;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -23,9 +24,25 @@ public class MinecraftClientMixin {
     @Unique private boolean announced = false;
     @Unique private boolean enabled = true;
     @Unique private boolean keyPressed = false;
+    @Unique private boolean mouseWasDown = false;
+    @Unique private int savedHits = 0;
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTickStart(CallbackInfo ci) {
+        if (this.player != null && this.screen == null) {
+            boolean mouseDown = Mouse.isButtonDown(0);
+            if (mouseDown && !this.mouseWasDown && this.attackCooldown > 0) {
+                int oldCooldown = this.attackCooldown;
+                if (this.enabled) {
+                    this.savedHits++;
+                    this.player.sendMessage(new LiteralText("§e[NoHitDelay] §aSaved Hit #" + this.savedHits + " §7(Blocked delay: " + oldCooldown + ")"));
+                } else {
+                    this.player.sendMessage(new LiteralText("§c[NoHitDelay OFF] §7Hit delayed! (" + oldCooldown + " ticks left)"));
+                }
+            }
+            this.mouseWasDown = mouseDown;
+        }
+
         if (this.enabled) {
             this.attackCooldown = 0;
         }
